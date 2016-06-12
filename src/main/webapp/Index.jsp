@@ -9,13 +9,33 @@
 <body>
 <!-- HTML for SEARCH BAR -->
 <div id="tfheader">
-    <form id="tfnewsearch" method="get" action="${pageContext.request.contextPath}/Test">
-        <select name="language" class="langDrop">
-            <c:forEach items="${languages}" var="lang" >
-                <option value="${lang.id}">${lang.name}</option>
-            </c:forEach>
-        </select>
-        <input type="text" class="tftextinput" name="word" size="21" maxlength="120"/><input type="submit" value="search" class="tfbutton"/>
+    <form id="tfnewsearch" method="get" action="${pageContext.request.contextPath}/test">
+        <div style="display: table-cell;">
+            <select name="fLanguage" class="langDrop" >
+                <c:forEach items="${languages}" var="lang" >
+                    <option value="${lang.id}">${lang.name}</option>
+                </c:forEach>
+            </select>
+            <br/>
+            <textarea name="fWord" cols="40" rows="5"><c:if test="${not empty tWord}">
+                    ${fWord}
+                </c:if></textarea>
+        </div>
+
+        <div style="display: table-cell;">
+            <select name="tLanguage" class="langDrop">
+                <c:forEach items="${languages}" var="lang" >
+                    <option value="${lang.id}">${lang.name}</option>
+                </c:forEach>
+            </select>
+            <br/>
+                <textarea  cols="40" rows="5">
+                    <c:if test="${not empty tWord}">
+                        ${tWord}
+                    </c:if>
+                </textarea>
+        </div>
+        <input type="submit" value="search" class="tfbutton"/>
     </form>
     <div class="tfclear"></div>
 </div>
